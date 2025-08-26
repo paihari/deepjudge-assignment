@@ -1,0 +1,147 @@
+{
+  "test_suite": "DeepJudge Multi-Agent System End-to-End Tests",
+  "timestamp": "2025-08-26T17:18:26.655510",
+  "total_tests": 3,
+  "results": {
+    "positive_test": {
+      "test_type": "POSITIVE",
+      "timestamp": "2025-08-26T17:18:19.582404",
+      "input": {
+        "user_query": "Is Kirkland & Ellis present in the agreement?",
+        "paragraph_count": 4,
+        "paragraphs": [
+          "This Stock and Asset Purchase Agreement is entered into as of October 28, 2021, among Purolite Corporation, a Delaware corporation, along with Stefan E. Brodie and Don B. Brodie (collectively referred to as the Sellers), and Ecolab Inc., a Delaware corporation, as the Purchaser. Additionally, Gibson, Dunn & Crutcher LLP, as an independent third-party representative, is engaged for specific advisory roles outlined in this Agreement.",
+          "This Agreement shall be governed by and construed in accordance with the internal laws of the State of Delaware, without giving effect to any choice or conflict of law provision. Each clause within this Agreement shall be interpreted independently, and the invalidity of one clause shall not affect the enforceability of the remaining provisions. Headings are for convenience only and shall not affect the interpretation of this Agreement. Nothing herein shall be construed as limiting or waiving any rights or obligations under applicable law unless expressly stated.",
+          "Such notices, demands, and other communications shall be directed to the Parties at their respective addresses. One Party may be contacted at:\n1 Ecolab Place\nSt. Paul, Minnesota 55102\nAttention: General Counsel\nwith a copy (which shall not constitute notice) to:\nShearman & Sterling LLP\n599 Lexington Avenue\nNew York, New York 10022\nAttention: Adam Miller\nAnother Party may be reached at:\nPurolite Corporation\n2201 Renaissance Boulevard\nKing of Prussia, Pennsylvania 19406\nAttention: Stefan E. Brodie; Howard Brodie\nwith a copy (which shall not constitute notice) to:\nCleary Gottlieb Steen & Hamilton LLP\nOne Liberty Plaza\nNew York, New York 10006\nAttention: John Reynolds; Sarah Lee\nAdditional communications relating to the role of the third-party representative shall be directed to:\nGibson, Dunn & Crutcher LLP\n200 Park Avenue\nNew York, New York 10166\nAttention: Jane Smith",
+          "All references to the singular include the plural and vice versa, and all references to any gender include all genders. The Parties agree that any ambiguities in the language of this Agreement shall not be construed against either Party. Section headings used in this Agreement are for reference only and shall not affect the meaning or interpretation of any provision."
+        ]
+      },
+      "processing_steps": {},
+      "output": {
+        "target_company": "Kirkland & Ellis",
+        "llm2_analysis": "Paragraph 1 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Not stated\nSeller: Purolite Corporation\nSeller Representative: Not stated\nThird-Party Representation: Advisory role by Gibson, Dunn & Crutcher LLP\nTarget Company Mentioned: No\n\nParagraph 2 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No\n\nParagraph 3 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Shearman & Sterling LLP\nSeller: Purolite Corporation\nSeller Representative: Cleary Gottlieb Steen & Hamilton LLP\nThird-Party Representation: Gibson, Dunn & Crutcher LLP (advisory role)\nTarget Company Mentioned: No\n\nParagraph 4 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No",
+        "final_result": {
+          "buyer_firm": "Shearman & Sterling LLP",
+          "seller_firm": "Cleary Gottlieb Steen & Hamilton LLP",
+          "third_party": "Gibson, Dunn & Crutcher LLP",
+          "contains_target_firm": false
+        },
+        "raw_json": "{\n  \"buyer_firm\": \"Shearman & Sterling LLP\",\n  \"seller_firm\": \"Cleary Gottlieb Steen & Hamilton LLP\",\n  \"third_party\": \"Gibson, Dunn & Crutcher LLP\",\n  \"contains_target_firm\": false\n}"
+      },
+      "validation": {
+        "status": "SUCCESS",
+        "target_company_detected": "Kirkland & Ellis",
+        "json_valid": true,
+        "required_fields": [
+          {
+            "field": "buyer_firm",
+            "present": true,
+            "value": "Shearman & Sterling LLP",
+            "type": "str"
+          },
+          {
+            "field": "seller_firm",
+            "present": true,
+            "value": "Cleary Gottlieb Steen & Hamilton LLP",
+            "type": "str"
+          },
+          {
+            "field": "third_party",
+            "present": true,
+            "value": "Gibson, Dunn & Crutcher LLP",
+            "type": "str"
+          },
+          {
+            "field": "contains_target_firm",
+            "present": true,
+            "value": false,
+            "type": "bool"
+          }
+        ],
+        "expected_vs_actual": {
+          "buyer_firm": {
+            "expected": "Shearman & Sterling LLP",
+            "actual": "Shearman & Sterling LLP",
+            "match": true
+          },
+          "seller_firm": {
+            "expected": "Cleary Gottlieb Steen & Hamilton LLP",
+            "actual": "Cleary Gottlieb Steen & Hamilton LLP",
+            "match": true
+          },
+          "third_party": {
+            "expected": "Gibson, Dunn & Crutcher LLP",
+            "actual": "Gibson, Dunn & Crutcher LLP",
+            "match": true
+          },
+          "contains_target_firm": {
+            "expected": false,
+            "actual": false,
+            "match": true
+          }
+        }
+      }
+    },
+    "negative_test": {
+      "test_type": "NEGATIVE",
+      "timestamp": "2025-08-26T17:18:20.502407",
+      "input": {
+        "user_query": "What is the weather forecast for tomorrow?",
+        "paragraph_count": 4,
+        "paragraphs": [
+          "This is dummy paragraph one that won't be processed.",
+          "This is dummy paragraph two with no legal content.",
+          "This is dummy paragraph three about random topics.",
+          "This is dummy paragraph four with generic information."
+        ]
+      },
+      "output": {
+        "result": "<user_message>Query is not relevant to the intended task.</user_message>"
+      },
+      "validation": {
+        "status": "SUCCESS",
+        "message": "System correctly stopped with XML message",
+        "xml_format_correct": true,
+        "system_stopped": true
+      }
+    },
+    "custom_positive_test": {
+      "test_type": "CUSTOM_POSITIVE",
+      "timestamp": "2025-08-26T17:18:26.655467",
+      "input": {
+        "user_query": "Is Microsoft Corporation mentioned in the agreement?",
+        "paragraph_count": 4,
+        "paragraphs": [
+          "This Software License Agreement is entered into between Microsoft Corporation, a Washington corporation (Licensor), and TechStart Inc., a Delaware corporation (Licensee).",
+          "Microsoft Corporation grants to Licensee a non-exclusive license to use the software subject to the terms herein.",
+          "Legal representation for Microsoft is provided by Cravath, Swaine & Moore LLP, while TechStart is represented by Wilson Sonsini Goodrich & Rosati.",
+          "This agreement shall be governed by Washington State law with disputes resolved through binding arbitration."
+        ]
+      },
+      "output": {
+        "target_company": "Microsoft Corporation",
+        "llm2_analysis": "Paragraph 1 Analysis:\nBuyer: TechStart Inc.\nBuyer Representative: Not stated\nSeller: Microsoft Corporation\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: Yes\n\nParagraph 2 Analysis:\nBuyer: TechStart Inc.\nBuyer Representative: Not stated\nSeller: Microsoft Corporation\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: Yes\n\nParagraph 3 Analysis:\nBuyer: TechStart Inc.\nBuyer Representative: Wilson Sonsini Goodrich & Rosati\nSeller: Microsoft Corporation\nSeller Representative: Cravath, Swaine & Moore LLP\nThird-Party Representation: None\nTarget Company Mentioned: Yes\n\nParagraph 4 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No",
+        "final_result": {
+          "buyer_firm": "Wilson Sonsini Goodrich & Rosati",
+          "seller_firm": "Cravath, Swaine & Moore LLP",
+          "third_party": "unknown",
+          "contains_target_firm": true
+        },
+        "raw_json": "{\n  \"buyer_firm\": \"Wilson Sonsini Goodrich & Rosati\",\n  \"seller_firm\": \"Cravath, Swaine & Moore LLP\",\n  \"third_party\": \"unknown\",\n  \"contains_target_firm\": true\n}"
+      },
+      "validation": {
+        "status": "SUCCESS",
+        "target_company_detected": "Microsoft Corporation",
+        "target_found_in_document": true,
+        "expected_target_found": true
+      }
+    }
+  },
+  "summary": {
+    "positive_test_passed": true,
+    "negative_test_passed": true,
+    "custom_positive_test_passed": true,
+    "all_tests_passed": true
+  },
+  "overall_status": "PASS"
+}
