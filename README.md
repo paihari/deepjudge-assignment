@@ -42,16 +42,31 @@ This system implements a 3-step LLM workflow using `gpt-4o-mini` with temperatur
 ### System Overview
 
 ```mermaid
-C4Context
-    title DeepJudge Multi-Agent System Context Diagram
+graph TB
+    U[Legal Professional] --> |"Query + 4 Paragraphs"| DS[DeepJudge Multi-Agent System]
+    DS --> |"gpt-4o-mini calls"| API[OpenAI API]
+    API --> DS
+    DS --> |"JSON Results"| U
     
-    Person(user, "Legal Professional", "Queries legal documents for target companies and law firms")
-    System(deepjudge, "DeepJudge Multi-Agent System", "3-step LLM workflow for law firm identification")
-    System_Ext(openai, "OpenAI API", "Provides gpt-4o-mini model with temperature 0.2")
+    subgraph "DeepJudge System"
+        LLM1[LLM1: Target Detection]
+        LLM2[LLM2: Law Firm Analysis]  
+        LLM3[LLM3: JSON Compilation]
+        
+        LLM1 --> LLM2
+        LLM2 --> LLM3
+    end
     
-    Rel(user, deepjudge, "Submits query + document paragraphs")
-    Rel(deepjudge, openai, "Processes text via LLM calls")
-    Rel(deepjudge, user, "Returns structured JSON results")
+    DS -.-> LLM1
+    DS -.-> LLM2
+    DS -.-> LLM3
+    
+    style U fill:#e1f5fe
+    style DS fill:#f3e5f5
+    style API fill:#fff3e0
+    style LLM1 fill:#e8f5e8
+    style LLM2 fill:#e8f5e8
+    style LLM3 fill:#e8f5e8
 ```
 
 ### Workflow Sequence
