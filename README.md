@@ -165,10 +165,32 @@ classDiagram
 
 ## Testing
 
-The system includes test cases with the sample data from the assignment:
+The system includes comprehensive test coverage for all components:
 
-- **Positive case**: "Is Kirkland & Ellis present in the agreement?"
-- **Negative case**: Irrelevant queries without target companies
+### Test Suite (`test_agents.py`)
+
+**Individual Agent Tests:**
+- **LLM1 Agent**: Target company detection with relevant/irrelevant queries
+- **LLM2 Agent**: Paragraph analysis with law firm extraction
+- **LLM3 Agent**: JSON compilation with format validation
+
+**Integration Tests:**
+- **Complete workflow**: End-to-end system testing
+- **Edge cases**: No law firms present, various query types
+- **Error handling**: Invalid inputs and malformed data
+
+### Sample Test Cases
+
+- **Positive case**: `"Is Kirkland & Ellis present in the agreement?"` → Full analysis
+- **Negative case**: `"What is the weather today?"` → System stops with XML message  
+- **Law firm detection**: Extracts buyer/seller/third-party firms accurately
+- **JSON validation**: Ensures required fields and proper data types
+
+Run tests with:
+```bash
+source .venv/bin/activate
+python test_agents.py
+```
 
 ## System Prompts
 
