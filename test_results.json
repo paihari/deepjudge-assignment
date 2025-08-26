@@ -1,11 +1,11 @@
 {
   "test_suite": "DeepJudge Multi-Agent System End-to-End Tests",
-  "timestamp": "2025-08-26T17:18:26.655510",
+  "timestamp": "2025-08-26T17:49:26.362481",
   "total_tests": 3,
   "results": {
     "positive_test": {
       "test_type": "POSITIVE",
-      "timestamp": "2025-08-26T17:18:19.582404",
+      "timestamp": "2025-08-26T17:49:19.466257",
       "input": {
         "user_query": "Is Kirkland & Ellis present in the agreement?",
         "paragraph_count": 4,
@@ -19,7 +19,7 @@
       "processing_steps": {},
       "output": {
         "target_company": "Kirkland & Ellis",
-        "llm2_analysis": "Paragraph 1 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Not stated\nSeller: Purolite Corporation\nSeller Representative: Not stated\nThird-Party Representation: Advisory role by Gibson, Dunn & Crutcher LLP\nTarget Company Mentioned: No\n\nParagraph 2 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No\n\nParagraph 3 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Shearman & Sterling LLP\nSeller: Purolite Corporation\nSeller Representative: Cleary Gottlieb Steen & Hamilton LLP\nThird-Party Representation: Gibson, Dunn & Crutcher LLP (advisory role)\nTarget Company Mentioned: No\n\nParagraph 4 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No",
+        "llm2_analysis": "Paragraph 1 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Not stated\nSeller: Purolite Corporation\nSeller Representative: Not stated\nThird-Party Representation: Advisory role by Gibson, Dunn & Crutcher LLP\nTarget Company Mentioned: No\n\nParagraph 2 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No\n\nParagraph 3 Analysis:\nBuyer: Ecolab Inc.\nBuyer Representative: Shearman & Sterling LLP\nSeller: Purolite Corporation\nSeller Representative: Cleary Gottlieb Steen & Hamilton LLP\nThird-Party Representation: Gibson, Dunn & Crutcher LLP for advisory roles\nTarget Company Mentioned: No\n\nParagraph 4 Analysis:\nBuyer: Not identified\nBuyer Representative: Not stated\nSeller: Not identified\nSeller Representative: Not stated\nThird-Party Representation: None\nTarget Company Mentioned: No",
         "final_result": {
           "buyer_firm": "Shearman & Sterling LLP",
           "seller_firm": "Cleary Gottlieb Steen & Hamilton LLP",
@@ -84,7 +84,7 @@
     },
     "negative_test": {
       "test_type": "NEGATIVE",
-      "timestamp": "2025-08-26T17:18:20.502407",
+      "timestamp": "2025-08-26T17:49:20.266523",
       "input": {
         "user_query": "What is the weather forecast for tomorrow?",
         "paragraph_count": 4,
@@ -107,7 +107,7 @@
     },
     "custom_positive_test": {
       "test_type": "CUSTOM_POSITIVE",
-      "timestamp": "2025-08-26T17:18:26.655467",
+      "timestamp": "2025-08-26T17:49:26.362438",
       "input": {
         "user_query": "Is Microsoft Corporation mentioned in the agreement?",
         "paragraph_count": 4,
